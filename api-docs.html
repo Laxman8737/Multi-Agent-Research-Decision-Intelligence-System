@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Multi-Agent Research &amp; Decision Intelligence System — API Docs</title><link rel="stylesheet" href="style.css"><style>.doc{max-width:950px;margin:40px auto;padding:24px}.doc table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}.doc th,.doc td{border:1px solid var(--border,#555);padding:9px;text-align:left}.doc pre{white-space:pre-wrap;overflow:auto}.back{display:inline-block;margin-bottom:24px}</style></head><body><main class="wrap doc"><a class="btn back" href="index.html">← Back to project</a><h1>API Documentation</h1>
+<p>**GitHub Pages note:** GitHub Pages hosts static files only. API endpoints require the Python backend to be running or deployed separately.</p>
+<h1>API Reference</h1>
+<p>Base URL `http://localhost:8000` · OpenAPI at `/docs` · if `API_KEY` is set send `X-API-Key`.</p>
+<h2>POST /api/research</h2>
+<pre><code>
+curl -X POST localhost:8000/api/research -H &#x27;content-type: application/json&#x27; \
+
+  -d &#x27;{&quot;question&quot;:&quot;What do the sources say about India solar installed capacity in 2024 and 2025?&quot;}&#x27;
+
+</code></pre>
+<p>`question`: string, 8–500 chars. Response (200):</p>
+<pre><code>
+{&quot;question&quot;:&quot;...&quot;,&quot;plan&quot;:[&quot;...&quot;,&quot;...&quot;],
+
+ &quot;trace&quot;:[{&quot;agent&quot;:&quot;Planner&quot;,&quot;ms&quot;:0.1,&quot;summary&quot;:&quot;4 sub-queries&quot;}, &quot;... Researcher, Extractor, Verifier, ConflictDetector, Writer&quot;],
+
+ &quot;facts&quot;:[{&quot;key&quot;:&quot;capacity india installed solar 2025&quot;,&quot;subject&quot;:&quot;India solar installed capacity&quot;,&quot;year&quot;:&quot;2025&quot;,&quot;unit&quot;:&quot;GW&quot;,&quot;status&quot;:&quot;verified|conflict|single_source&quot;,&quot;sources&quot;:[&quot;Meridian Research&quot;],&quot;values&quot;:{&quot;110&quot;:[&quot;Meridian Research&quot;]}}],
+
+ &quot;conflicts&quot;:[{&quot;subject&quot;:&quot;...&quot;,&quot;year&quot;:&quot;2024&quot;,&quot;unit&quot;:&quot;GW&quot;,&quot;values&quot;:{&quot;88&quot;:[&quot;A&quot;],&quot;118.8&quot;:[&quot;B&quot;]}}],
+
+ &quot;report&quot;:&quot;# Research brief: ...\n## Verified ... [S1]\n## Sources\n- [S1] Meridian Research&quot;,
+
+ &quot;flags&quot;:[&quot;quarantined sentence from Industry Ledger (prompt-injection pattern)&quot;],
+
+ &quot;usage&quot;:{&quot;model&quot;:&quot;offline-extractive&quot;,&quot;tokens_in&quot;:998,&quot;tokens_out&quot;:210,&quot;usd&quot;:0.0,&quot;inr&quot;:0.0},&quot;total_ms&quot;:0.9,
+
+ &quot;tool_calls&quot;:[{&quot;tool&quot;:&quot;search_corpus&quot;,&quot;args&quot;:{&quot;query&quot;:&quot;...&quot;,&quot;k&quot;:25}}]}
+
+</code></pre>
+<h2>GET /api/tools → tool specs in LLM function-calling format · GET /api/metrics → cumulative cost · GET /api/health</h2>
+<h2>Errors</h2>
+<table>
+<tr><th>code</th><th>meaning</th></tr>
+<tr><th>400</th><th>blank question</th></tr>
+<tr><th>401</th><th>bad/missing API key</th></tr>
+<tr><th>422</th><th>validation error (question too short/long)</th></tr>
+</table>
+<p>Tool-argument errors inside the workflow raise `ToolError` (unknown tool, missing/extra/mistyped argument) and are never executed.</p></main></body></html>
