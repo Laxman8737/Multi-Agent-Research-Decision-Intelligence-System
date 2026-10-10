@@ -1,0 +1,12 @@
+{"key_subject": "India electric vehicle sales", "year": "2024", "status": "verified", "value": 0.96}
+{"key_subject": "India electric vehicle sales", "year": "2025", "status": "verified", "value": 1.2}
+{"key_subject": "India solar installed capacity", "year": "2024", "status": "conflict", "value": 88.0}
+{"key_subject": "India solar installed capacity", "year": "2025", "status": "single_source", "value": 110}
+{"key_subject": "India smartphone exports", "year": "2024", "status": "verified", "value": 19.2}
+{"key_subject": "India smartphone exports", "year": "2025", "status": "verified", "value": 24}
+{"key_subject": "India broadband penetration", "year": "2024", "status": "conflict", "value": 30.4}
+{"key_subject": "India broadband penetration", "year": "2025", "status": "single_source", "value": 38}
+{"key_subject": "India data centre capacity", "year": "2024", "status": "verified", "value": 1.12}
+{"key_subject": "India data centre capacity", "year": "2025", "status": "verified", "value": 1.4}
+{"key_subject": "India fintech adoption rate", "year": "2024", "status": "conflict", "value": 49.6}
+{"key_subject": "India fintech adoption rate", "year": "2025", "status": "single_source", "value": 62}

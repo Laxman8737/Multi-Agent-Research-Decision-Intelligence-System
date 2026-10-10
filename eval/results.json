@@ -1,0 +1,27 @@
+{
+  "multi-agent": {
+    "status_accuracy": 0.5833333333333334,
+    "missing": 2,
+    "conflict_precision": 0.6666666666666666,
+    "conflict_recall": 0.6666666666666666,
+    "conflict_f1": 0.6666666666666666
+  },
+  "baseline (no verification: every extracted claim accepted)": {
+    "status_accuracy": 0.5,
+    "missing": 2,
+    "conflict_precision": 0.0,
+    "conflict_recall": 0.0,
+    "conflict_f1": 0.0
+  },
+  "_other": {
+    "injection_payload_in_reports": 0,
+    "quarantined_sentences": 6,
+    "citation_grounding": 1.0,
+    "latency_ms_mean": 1.6,
+    "latency_ms_max": 2.83,
+    "tokens_in_per_run": 1000,
+    "usd_per_run_offline": 0.0,
+    "facts_expected": 12,
+    "keys_predicted": 15
+  }
+}
